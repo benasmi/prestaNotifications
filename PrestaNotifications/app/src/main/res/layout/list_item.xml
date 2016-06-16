@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/text_wrap"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@drawable/borders"
+    android:orientation="vertical"
+
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:weightSum="1"
+    android:paddingLeft="10dp"
+    android:paddingTop="5dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/message_icon"
+                android:src="@drawable/dollar_icon"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="2016-06-06"
+                android:id="@+id/date"
+                android:textColor="#333131"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/message_icon"
+                android:textSize="13dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="New order..."
+                android:id="@+id/type"
+                android:textColor="#464141"
+                android:layout_alignBottom="@+id/message_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/arrow"
+
+                android:layout_alignParentRight="true"
+                android:layout_toEndOf="@+id/cost"
+                android:src="@drawable/down"
+                android:layout_marginLeft="10dp"
+                android:paddingBottom="2dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="295dp"
+                android:layout_height="1dp"
+                android:id="@+id/imageView3"
+                android:background="#363636"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Order reference: #fasasfas"
+                android:id="@+id/order_reference"
+                android:textColor="#3f3c3c"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:paddingLeft="10dp"
+                android:paddingTop="2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Buyer name: Martynas Dargis"
+                android:id="@+id/buyer_name"
+                android:textColor="#3f3c3c"
+                android:paddingTop="2dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/order_reference"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Order amount: 1"
+                android:id="@+id/order_amount"
+                android:textColor="#3f3c3c"
+                android:paddingTop="2dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/buyer_name"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Order price: 50"
+                android:id="@+id/cost"
+                android:textColor="#3f3c3c"
+                android:paddingTop="2dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/buyer_name"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Payment method: Paypal"
+                android:id="@+id/payment_method"
+                android:textColor="#3f3c3c"
+                android:paddingTop="2dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/order_amount"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Order status: Waiting for payment"
+                android:id="@+id/order_status"
+                android:textColor="#3f3c3c"
+                android:paddingTop="2dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/payment_method"
+                android:layout_alignParentStart="true" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3498db"
+    tools:context="com.example.benas.prestanotifications.LoginActivity">
+
+    <TextView
+        android:id="@+id/useless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp"
+        android:text="Log In"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ecf0f1"
+        android:textSize="43dp" />
+
+    <EditText
+        android:id="@+id/username_login"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/useless"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+
+        android:hint="Username"
+        android:maxLines="1"
+        android:paddingRight="5dp"
+        android:paddingStart="10dp"
+        android:singleLine="true"
+        android:textColor="#ffffff"
+        android:textColorHint="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/password_login"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_alignStart="@+id/username_login"
+        android:layout_below="@+id/username_login"
+        android:layout_marginTop="10dp"
+
+        android:hint="Password"
+        android:maxLines="1"
+        android:paddingRight="5dp"
+        android:paddingStart="10dp"
+        android:password="true"
+        android:singleLine="true"
+        android:textColor="#ffffff"
+        android:textColorHint="#FFFFFF" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/password_login"
+        android:layout_alignStart="@+id/password_login"
+        android:layout_below="@+id/password_login"
+        android:layout_marginTop="40dp"
+        android:alpha="0.85"
+        android:onClick="login"
+        android:text="Login"
+        android:textColor="#34495e"
+        android:textSize="17dp"
+        android:background="@drawable/button_borders" />
+
+    <CheckBox
+        android:id="@+id/remember_my_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/password_login"
+        android:layout_below="@+id/password_login"
+        android:layout_marginTop="5dp"
+        android:checked="false"
+        android:text="Remember my password"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>
