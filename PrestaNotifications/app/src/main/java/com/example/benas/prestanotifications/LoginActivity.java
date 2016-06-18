@@ -23,6 +23,8 @@ public class LoginActivity extends AppCompatActivity {
         username_text = (TextView) findViewById(R.id.username_login);
         password_text = (TextView) findViewById(R.id.password_login);
 
+        this.startService(new Intent(this, RegisterTokenService.class));
+
 
     }
 

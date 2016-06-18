@@ -7,6 +7,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.v4.content.WakefulBroadcastReceiver;
+import android.util.Log;
+
+import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -16,6 +20,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
 
 /**
  * Created by Benas on 6/14/2016.
@@ -29,7 +35,8 @@ public class ServerManager extends AsyncTask<String, String, String>{
     private int response;
     private String username;
     private String password;
-
+    private GoogleCloudMessaging gcm;
+    private String reg_id;
 
     public ServerManager(Context context){
         sharedPreferences = context.getSharedPreferences("DataPrefs", Context.MODE_PRIVATE);
@@ -52,8 +59,16 @@ public class ServerManager extends AsyncTask<String, String, String>{
         new AlertDialog.Builder(context)
                 .setMessage(message)
                 .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
                 .show();
     }
+
+
 
     private int login(String username, String password) {
 
@@ -66,8 +81,10 @@ public class ServerManager extends AsyncTask<String, String, String>{
         JSONObject jsonObject = new JSONObject();
 
         try {
+            Log.i("TEST", sharedPreferences.getString("device_id", "error"));
             jsonObject.putOpt("email_username", username);
             jsonObject.putOpt("password", password);
+            jsonObject.putOpt("device_id", sharedPreferences.getString("device_id", ""));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -129,7 +146,6 @@ public class ServerManager extends AsyncTask<String, String, String>{
             switch (response){
                 case 0:
                     context.startActivity(new Intent(context, NotificationActivity.class));
-
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("username", username);

@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 22
     buildToolsVersion "23.0.2"
@@ -32,7 +32,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:recyclerview-v7:22.2.+'
-    compile 'com.google.android.gms:play-services:7.5.0'
+    compile "com.google.android.gms:play-services-gcm:8.3.0"
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.hudomju:swipe-to-dismiss-undo:1.0'
     compile 'com.android.support:design:22.2.1'
