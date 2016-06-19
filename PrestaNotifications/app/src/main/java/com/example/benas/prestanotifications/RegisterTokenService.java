@@ -46,6 +46,7 @@ public class RegisterTokenService extends IntentService {
                     GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
             sharedPreferences.edit().putString("device_id", token).commit();
 
+            Log.i("TEST", token);
 
             subscribeTopics(token);
 
@@ -82,8 +83,6 @@ public class RegisterTokenService extends IntentService {
             jsonObject.putOpt("password", sharedPreferences.getString("password", ""));
             jsonObject.putOpt("device_id", sharedPreferences.getString("device_id", ""));
             jsonObject.putOpt("device_id_old", sharedPreferences.getString("old_device_id", ""));
-
-            Log.i("TEST", jsonObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }

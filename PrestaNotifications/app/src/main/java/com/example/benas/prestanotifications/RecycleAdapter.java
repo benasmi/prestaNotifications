@@ -2,6 +2,7 @@ package com.example.benas.prestanotifications;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -32,6 +36,27 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
     public void remove(int position) {
         infoHolder.remove(position);
         notifyItemRemoved(position);
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("notifications", context.MODE_PRIVATE);
+
+        String notification_data = sharedPreferences.getString("notification_data", "");
+
+        if(!notification_data.isEmpty()){
+            try {
+                JSONArray jsonArray = new JSONArray(notification_data);
+                jsonArray.remove(position);
+
+                sharedPreferences.edit().putString("notification_data", jsonArray.toString()).commit();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void add(InfoHolder info){
+        infoHolder.add(info);
+        notifyDataSetChanged();
     }
 
 
@@ -57,12 +82,12 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         String dataType =  data.getType();
 
         holder.date.setText(data.getOrder_date());
-        holder.order_reference.setText(data.getOrder_date());
-        holder.order_status.setText(data.getOrder_date());
-        holder.buyer_name.setText(data.getOrder_date());
-        holder.order_amount.setText(data.getOrder_date());
-        holder.cost.setText(data.getOrder_date());
-        holder.payment_method.setText(data.getOrder_date());
+        holder.order_reference.setText(data.getOrder_reference());
+        holder.order_status.setText(data.getOrder_status());
+        holder.buyer_name.setText(data.getBuyer_name());
+        holder.order_amount.setText(data.getOrder_amount());
+        holder.cost.setText(data.getCost());
+        holder.payment_method.setText(data.getPayment_method());
 
         if(dataType.equals("0")){
             holder.message_icon.setImageDrawable(context.getResources().getDrawable(R.drawable.dollar_icon));

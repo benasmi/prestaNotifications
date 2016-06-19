@@ -40,7 +40,9 @@
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND"
+            >
+
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <category android:name="com.example.benas.prestanotifications" />
@@ -67,5 +69,6 @@
             android:name=".RegisterTokenService"
             android:exported="false"></service>
     </application>
+
 
 </manifest>

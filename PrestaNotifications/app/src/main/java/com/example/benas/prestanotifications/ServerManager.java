@@ -120,10 +120,6 @@ public class ServerManager extends AsyncTask<String, String, String>{
     //Login method
     private int login(String username, String password) {
 
-        context.startService(new Intent(context, RegisterTokenService.class));
-
-
-
         //Connect to mysql.
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost("http://bm.binded.co.uk/login.php");

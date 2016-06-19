@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        startService(new Intent(this, RegisterTokenService.class));
 
         username_text = (TextView) findViewById(R.id.username_login);
         password_text = (TextView) findViewById(R.id.password_login);

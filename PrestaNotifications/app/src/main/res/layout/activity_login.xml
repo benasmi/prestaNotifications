@@ -58,23 +58,12 @@
         android:layout_alignEnd="@+id/password_login"
         android:layout_alignStart="@+id/password_login"
         android:layout_below="@+id/password_login"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:alpha="0.85"
         android:onClick="login"
         android:text="Login"
         android:textColor="#34495e"
         android:textSize="17dp"
         android:background="@drawable/button_borders" />
-
-    <CheckBox
-        android:id="@+id/remember_my_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/password_login"
-        android:layout_below="@+id/password_login"
-        android:layout_marginTop="5dp"
-        android:checked="false"
-        android:text="Remember my password"
-        android:textColor="#ffffff" />
 
 </RelativeLayout>
