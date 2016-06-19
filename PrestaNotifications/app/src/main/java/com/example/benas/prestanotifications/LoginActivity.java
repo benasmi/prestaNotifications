@@ -1,6 +1,8 @@
 package com.example.benas.prestanotifications;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,15 +22,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         username_text = (TextView) findViewById(R.id.username_login);
         password_text = (TextView) findViewById(R.id.password_login);
-
-        this.startService(new Intent(this, RegisterTokenService.class));
-
-
     }
 
     public void login(View view){
+
+
+
 
         String username = username_text.getText().toString().trim();
         String password = password_text.getText().toString().trim();

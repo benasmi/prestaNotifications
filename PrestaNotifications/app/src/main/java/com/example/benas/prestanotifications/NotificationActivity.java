@@ -34,39 +34,7 @@ public class NotificationActivity extends AppCompatActivity {
         data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
         data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
         data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
-        data.add(new InfoHolder("255", "0", "sss", "sss", "ps", "spsp", "ssss", "sss", true));
+
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recycle_view);

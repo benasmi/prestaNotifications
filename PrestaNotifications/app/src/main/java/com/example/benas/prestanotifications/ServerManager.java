@@ -43,6 +43,7 @@ public class ServerManager extends AsyncTask<String, String, String>{
         this.context = context;
     }
 
+    //Dialog box
     private void createDialog(String message){
         dialog = new ProgressDialog(context);
         dialog.setCancelable(false);
@@ -55,6 +56,7 @@ public class ServerManager extends AsyncTask<String, String, String>{
         }
 
     }
+    //Error box to inform UI
     private void createErrorBox(String message){
         new AlertDialog.Builder(context)
                 .setMessage(message)
@@ -69,8 +71,58 @@ public class ServerManager extends AsyncTask<String, String, String>{
     }
 
 
+    //Crearing dialog boxes, etc...
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
 
+
+    //Sending information to server.
+    @Override
+    protected String doInBackground(String... params) {
+        method_type = params[0];
+
+        if(method_type.equals("LOGIN")){
+            username=params[1];
+            password=params[2];
+            response = login(username, password);
+        }
+
+
+        return null;
+    }
+
+    //Checking response codes for actions
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        dismissDialog();
+        if(method_type.equals("LOGIN")){
+
+            switch (response){
+                case 0:
+                    context.startActivity(new Intent(context, NotificationActivity.class));
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("username", username);
+                    editor.putString("password", password);
+                    editor.commit();
+                    break;
+                case 1:
+                    createErrorBox("Invalid email or password");
+                    break;
+            }
+        }
+    }
+
+
+    //Login method
     private int login(String username, String password) {
+
+        context.startService(new Intent(context, RegisterTokenService.class));
+
+
 
         //Connect to mysql.
         HttpClient httpClient = new DefaultHttpClient();
@@ -114,50 +166,6 @@ public class ServerManager extends AsyncTask<String, String, String>{
         }
     }
 
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
-
-
-
-    @Override
-    protected String doInBackground(String... params) {
-        method_type = params[0];
-
-        if(method_type.equals("LOGIN")){
-            username=params[1];
-            password=params[2];
-            response = login(username, password);
-        }
-
-        return null;
-    }
-
-
-
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        dismissDialog();
-
-
-        if(method_type.equals("LOGIN")){
-            switch (response){
-                case 0:
-                    context.startActivity(new Intent(context, NotificationActivity.class));
-
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("username", username);
-                    editor.putString("password", password);
-                    editor.commit();
-                    break;
-                case 1:
-                    createErrorBox("Invalid email or password");
-                    break;
-            }
-        }
-    }
 
 
 }
