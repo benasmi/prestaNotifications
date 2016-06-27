@@ -54,6 +54,8 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
     }
 
+
+
     public void add(InfoHolder info){
         infoHolder.add(info);
         notifyDataSetChanged();
