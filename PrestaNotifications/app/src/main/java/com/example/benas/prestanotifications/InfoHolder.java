@@ -13,9 +13,10 @@ public class InfoHolder {
     private String payment_method;
     private String order_status;
     private String type;
+    private String message;
 
 
-    public InfoHolder(String cost,String type, String buyer_name, String order_amount, String order_date, String order_reference, String order_status, String payment_method,boolean isClicked) {
+    public InfoHolder(String cost,String type, String buyer_name, String order_amount, String order_date, String order_reference, String order_status, String payment_method, String message, boolean isClicked) {
         this.buyer_name = buyer_name;
         this.order_amount = order_amount;
         this.type = type;
@@ -24,6 +25,7 @@ public class InfoHolder {
         this.order_reference = order_reference;
         this.order_status = order_status;
         this.payment_method = payment_method;
+        this.message = message;
     }
 
 
@@ -89,5 +91,13 @@ public class InfoHolder {
 
     public void setCost(String cost) {
         this.cost = cost;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

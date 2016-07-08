@@ -84,7 +84,8 @@ public class NotificationActivity extends AppCompatActivity {
         String NotificationDataRaw = sharedPreferences.getString("notification_data", "");
 
 
-
+        recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
+        adapter = new RecycleAdapter(this, data);
 
 
 
@@ -98,17 +99,18 @@ public class NotificationActivity extends AppCompatActivity {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                    String message = "Message: " + jsonObject.getString("message");
+                    String message = jsonObject.getString("message");
                     String type = jsonObject.getString("type");
                     String message_date = jsonObject.getString("message_date");
-                    String order_reference = "Order reference: " + jsonObject.getString("order_reference");
-                    String buyer_name = "Buyer name: " + jsonObject.getString("buyer_name");
-                    String cost = "Cost: " + jsonObject.getString("cost");
-                    String order_amount = "Order amount: " + jsonObject.getString("order_amount");
-                    String payment_method = "Payment method: " + jsonObject.getString("payment_method");
-                    String order_status = "Order status: " + jsonObject.getString("order_status");
+                    String order_reference = jsonObject.getString("order_reference");
+                    String buyer_name = jsonObject.getString("buyer_name");
+                    String cost = jsonObject.getString("cost");
+                    String order_amount = jsonObject.getString("order_amount");
+                    String payment_method = "Ordered via " + jsonObject.getString("payment_method");
+                    String order_status = jsonObject.getString("order_status");
 
-                    data.add(new InfoHolder(cost, type, buyer_name, order_amount, message_date, order_reference, order_status, payment_method, true));
+                    adapter.add(new InfoHolder(cost, type, buyer_name, order_amount, message_date, order_reference, order_status, payment_method, message, true));
+
 
                 }
             } catch (JSONException e) {
@@ -117,8 +119,7 @@ public class NotificationActivity extends AppCompatActivity {
         }
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
-        adapter = new RecycleAdapter(this, data);
+
 
 
 
@@ -133,7 +134,6 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 no_notifs.setVisibility(View.INVISIBLE);
-                Log.i("TEST", "DAEJOOOOOO");
 
                     SharedPreferences sharedPreferences = getSharedPreferences("notifications", MODE_PRIVATE);
                     String NotificationDataRaw = sharedPreferences.getString("notification_data", "");
@@ -153,16 +153,16 @@ public class NotificationActivity extends AppCompatActivity {
                     }
 
                     try {
-                        String message = "Message: " +  jsonObject.getString("message");
+                        String message = jsonObject.getString("message");
                         String type = jsonObject.getString("type");
                         String message_date =  jsonObject.getString("message_date");
-                        String order_reference = "Order reference: " + jsonObject.getString("order_reference");
-                        String buyer_name = "Buyer name: " + jsonObject.getString("buyer_name");
-                        String cost = "Cost: " + jsonObject.getString("cost");
-                        String order_amount = "Order amount: " + jsonObject.getString("order_amount");
-                        String payment_method = "Payment method: " + jsonObject.getString("payment_method");
-                        String order_status = "Order status: " + jsonObject.getString("order_status");
-                        adapter.add(new InfoHolder(cost, type, buyer_name, order_amount, message_date, order_reference, order_status, payment_method, true));
+                        String order_reference = jsonObject.getString("order_reference");
+                        String buyer_name = jsonObject.getString("buyer_name");
+                        String cost = jsonObject.getString("cost");
+                        String order_amount = jsonObject.getString("order_amount");
+                        String payment_method = "Ordered via " + jsonObject.getString("payment_method");
+                        String order_status = jsonObject.getString("order_status");
+                        adapter.add(new InfoHolder(cost, type, buyer_name, order_amount, message_date, order_reference, order_status, payment_method,message, true));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

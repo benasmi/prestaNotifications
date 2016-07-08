@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 
+import java.util.Date;
+
 /**
  * Created by Benas on 6/27/2016.
  */
@@ -37,6 +39,7 @@ public class CheckingUtils {
     }
     public void starterErrorBox(String message){
         new AlertDialog.Builder(context, R.style.MyAlertDialogStyle)
+
                 .setMessage(message)
                 .setCancelable(false)
                 .setIcon(android.R.drawable.ic_dialog_alert)
