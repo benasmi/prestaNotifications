@@ -39,13 +39,11 @@ public class ServerManager extends AsyncTask<String, String, String>{
     private String password;
     private GoogleCloudMessaging gcm;
     private String reg_id;
-    private CheckingUtils utils;
 
     public ServerManager(Context context, String dialog_type){
         sharedPreferences = context.getSharedPreferences("DataPrefs", Context.MODE_PRIVATE);
         this.context = context;
         this.dialog_type = dialog_type;
-        utils = new CheckingUtils(context);
     }
 
     //Dialog box
@@ -108,7 +106,7 @@ public class ServerManager extends AsyncTask<String, String, String>{
                     editor.commit();
                     break;
                 case 1:
-                    utils.createErrorBox("Invalid email or password");
+                    CheckingUtils.createErrorBox("Invalid email or password", context);
                     break;
             }
         }else if(method_type.equals("LOGOUT")){

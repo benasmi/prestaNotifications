@@ -19,13 +19,13 @@ public class CheckingUtils {
     }
 
 
-    public boolean isNetworkConnected() {
+    public static boolean isNetworkConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null;
     }
 
     //Error box to inform UI
-    public void createErrorBox(String message){
+    public static void createErrorBox(String message, Context context){
         new AlertDialog.Builder(context, R.style.MyAlertDialogStyle)
                 .setMessage(message)
                 .setIcon(android.R.drawable.ic_dialog_alert)
@@ -37,7 +37,7 @@ public class CheckingUtils {
                 })
                 .show();
     }
-    public void starterErrorBox(String message){
+    public static void starterErrorBox(String message, Context context){
         new AlertDialog.Builder(context, R.style.MyAlertDialogStyle)
 
                 .setMessage(message)

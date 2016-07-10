@@ -40,4 +40,6 @@ dependencies {
     compile('org.apache.httpcomponents:httpmime:4.3') {
         exclude module: "httpclient-4.3.jar"
     }
+
+    compile 'me.leolin:ShortcutBadger:1.1.4@aar'
 }

@@ -5,18 +5,15 @@
 <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/message_text_wrap"
     android:layout_width="match_parent"
-    android:layout_height="53dp"
-    android:background="@drawable/borders"
+    android:layout_height="55dp"
+    android:background="#ffffff"
     android:orientation="vertical"
-
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="2dp"
     android:weightSum="1">
 
 
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="53dp"
@@ -24,7 +21,8 @@
 
         <RelativeLayout
             android:layout_width="60dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/relativeLayout5">
 
             <ImageView
                 android:layout_width="35dp"
@@ -38,8 +36,10 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="225dp"
-            android:layout_height="match_parent">
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/relativeLayout5">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,7 +51,8 @@
                 android:textStyle="bold"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:textSize="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +62,8 @@
                 android:id="@+id/textView2"
                 android:layout_below="@+id/message_buyer_name"
                 android:layout_alignStart="@+id/message_buyer_name"
-                android:textColor="#636e6f" />
+                android:textColor="#636e6f"
+                android:textStyle="italic" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -72,34 +74,7 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="May 5th"
-                android:id="@+id/message_date"
-                android:textColor="#636e6f"
-                android:layout_alignTop="@+id/message_buyer_name"
-                android:layout_toStartOf="@+id/message_dots"
-                android:textSize="15dp"
-                android:textIsSelectable="false"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"></RelativeLayout>
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:orientation="horizontal"
@@ -122,25 +97,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Labai man patinka tavo kojines. Tik enzinau, ar yra garantinis. Ka daryti jei sulauzysiu? :(("
+            android:text="drhdfhdfh"
             android:id="@+id/message"
             android:textColor="#636e6f"
             android:textSize="15dp"
-            android:gravity="center_vertical|center|center_horizontal"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:gravity="center"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/message_dots"
-        android:src="@drawable/down"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="105dp"
+        android:layout_height="match_parent"
+        android:gravity="right"
         android:layout_alignParentTop="true"
-        android:paddingLeft="0dp" />
+        android:layout_alignParentEnd="true"
+        android:id="@+id/linearLayout2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="January 30"
+            android:id="@+id/message_date"
+            android:textColor="#636e6f"
+            android:layout_alignTop="@+id/message_buyer_name"
+            android:layout_toStartOf="@+id/message_dots"
+
+            android:textSize="14dp"
+            android:textIsSelectable="false"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:gravity="right"
+            android:layout_marginRight="10dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/imageView5"
+        android:background="#a9a9a9"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

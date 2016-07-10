@@ -132,7 +132,6 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         private TextView payment_method;
         private TextView order_status;
         private RelativeLayout order_layout;
-        private ImageView dots;
 
         //Message layout
         private TextView message_date;
@@ -145,13 +144,12 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
         @Override
         public void onClick(View v) {
-            ResizeAnimation expand = new ResizeAnimation(v, 400, 170);
+            ResizeAnimation expand = new ResizeAnimation(v, 390, 175);
             expand.setDuration(200);
-            ResizeAnimation shrink = new ResizeAnimation(v, 170, 400);
+            ResizeAnimation shrink = new ResizeAnimation(v, 175, 390);
             shrink.setDuration(200);
 
             v.startAnimation(isClicked ? expand : shrink);
-            dots.setImageDrawable(isClicked ? context.getResources().getDrawable(R.drawable.up) : context.getResources().getDrawable(R.drawable.down));
             isClicked = !isClicked;
         }
 
@@ -170,7 +168,6 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
                     cost = (TextView) itemView.findViewById(R.id.cost);
                     payment_method = (TextView) itemView.findViewById(R.id.payment_method);
                     order_status = (TextView) itemView.findViewById(R.id.order_status);
-                    dots = (ImageView) itemView.findViewById(R.id.dots);
                     order_layout.setOnClickListener(this);
 
                     break;
@@ -180,8 +177,6 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
                     message_buyer_name = (TextView) itemView.findViewById(R.id.message_buyer_name);
                     message = (TextView) itemView.findViewById(R.id.message);
                     message_date = (TextView) itemView.findViewById(R.id.message_date);
-
-                    dots = (ImageView) itemView.findViewById(R.id.message_dots);
                     message_layout.setOnClickListener(this);
                     break;
             }

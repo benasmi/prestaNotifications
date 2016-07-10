@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import me.leolin.shortcutbadger.ShortcutBadger;
+
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -54,6 +56,10 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.push_right_in, R.anim.push_rigth_out);
         setContentView(R.layout.activity_notification);
+
+        getSharedPreferences("notifications", Context.MODE_PRIVATE).edit().putInt("badgeCount", 0).commit();
+
+        ShortcutBadger.removeCount(this);
 
         SharedPreferences loginPrefs = getSharedPreferences("DataPrefs",MODE_PRIVATE);
         String username = loginPrefs.getString("username", "");
@@ -175,19 +181,10 @@ public class NotificationActivity extends AppCompatActivity {
 
     }
 
-
-
     @Override
     protected void onResume() {
-        registerReceiver();
+        adapter.notifyDataSetChanged();
         super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
-        isReceiverRegistered = false;
-        super.onPause();
     }
 
     private void registerReceiver(){
@@ -241,6 +238,10 @@ public class NotificationActivity extends AppCompatActivity {
 
 
     public void logout(MenuItem item) {
-        new ServerManager(this,"LOGOUT").execute("LOGOUT");
+        if(CheckingUtils.isNetworkConnected(this)) {
+            new ServerManager(this, "LOGOUT").execute("LOGOUT");
+        }else{
+            CheckingUtils.createErrorBox("You need internet connection to do that!", this);
+        }
     }
 }

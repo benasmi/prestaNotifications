@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NotificationActivity"
-    android:background="#e2fdee">
+    android:background="#ffffff">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_view"
@@ -18,7 +18,7 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#FF2ECC71"
+        android:background="#DD4337"
         android:elevation="4dp"
         android:theme="@style/AppThemeBar"
         app:popupTheme="@style/AppThemeBar"/>
@@ -38,6 +38,7 @@
             android:textColor="#95a5a6"
             android:textSize="20dp"
             android:visibility="invisible" />
+
     </RelativeLayout>
 
 </RelativeLayout>

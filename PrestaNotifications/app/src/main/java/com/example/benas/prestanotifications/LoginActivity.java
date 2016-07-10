@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private CheckingUtils utils;
     private TextView username_text;
     private TextView password_text;
 
@@ -21,10 +20,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.push_right_in, R.anim.push_rigth_out);
         setContentView(R.layout.activity_login);
-        utils = new CheckingUtils(this);
 
-        if(!utils.isNetworkConnected()) {
-            utils.starterErrorBox("Please, enable your internet connection and start again");
+        if(!CheckingUtils.isNetworkConnected(this)) {
+            CheckingUtils.starterErrorBox("Please, enable your internet connection and start again", this);
             return;
         }else{
 
@@ -70,8 +68,8 @@ public class LoginActivity extends AppCompatActivity {
         if(password.contains(" ")){
             password_text.setError("Password may not contain spaces!");
         }
-        if(!utils.isNetworkConnected()){
-            utils.createErrorBox("You need internet connection to login");
+        if(!CheckingUtils.isNetworkConnected(this)){
+            CheckingUtils.createErrorBox("You need internet connection to login", this);
             return;
         }
 

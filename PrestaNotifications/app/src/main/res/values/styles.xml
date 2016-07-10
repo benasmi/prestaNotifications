@@ -17,18 +17,18 @@
     </style>
 
     <style name="AppThemeNoBar" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimaryDark">#27ae60</item>
-        <item name="colorPrimary">#2ecc71</item>
+        <item name="colorPrimaryDark">#B53021</item>
+        <item name="colorPrimary">#cc362e</item>
         <item name="colorAccent">#f39c12</item>
     </style>
 
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- Used for the buttons -->
-        <item name="colorAccent">#FFC107</item>
+        <item name="colorAccent">#d9d9d9</item>
         <!-- Used for the title and text -->
         <item name="android:textColorPrimary">#FFFFFF</item>
         <!-- Used for the background -->
-        <item name="android:background">#4CAF50</item>
+        <item name="android:background">#B53021</item>
     </style>
 
 </resources>

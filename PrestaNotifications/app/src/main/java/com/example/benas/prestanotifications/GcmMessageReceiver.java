@@ -18,6 +18,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import me.leolin.shortcutbadger.ShortcutBadger;
+
 /**
  * Created by Benas on 6/19/2016.
  */
@@ -29,6 +31,15 @@ public class GcmMessageReceiver extends GcmListenerService {
     @Override
     public void onMessageReceived(String from, Bundle data) {
 
+        SharedPreferences sharedPreferences = getSharedPreferences("notifications", Context.MODE_PRIVATE);
+
+
+        int badgeCount = sharedPreferences.getInt("badgeCount", 0);
+        badgeCount++;
+
+        sharedPreferences.edit().putInt("badgeCount", badgeCount).commit();
+
+        ShortcutBadger.applyCount(this, badgeCount);
 
         String message = data.getString("message");
         String type = data.getString("type");
@@ -41,9 +52,9 @@ public class GcmMessageReceiver extends GcmListenerService {
         String order_status = data.getString("order_status");
 
 
-        sendNotification(message, type, message_date);
+        sendNotification(buyer_name, type, message, cost);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("notifications", Context.MODE_PRIVATE);
+
         String notification_data = sharedPreferences.getString("notification_data", "");
 
         JSONObject jsonObject = new JSONObject();
@@ -80,7 +91,7 @@ public class GcmMessageReceiver extends GcmListenerService {
         LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent("UPDATE_REQUIRED"));
     }
 
-    private void sendNotification(String message, String type, String date) {
+    private void sendNotification(String buyer_name, String type, String message, String cost) {
         Intent intent = new Intent(this, NotificationActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -91,15 +102,15 @@ public class GcmMessageReceiver extends GcmListenerService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
 
         if(type.equals("0")) {
-                    notificationBuilder.setSmallIcon(R.drawable.dollar_icon)
-                    .setContentTitle("New order!")
-                    .setContentText(date)
+                    notificationBuilder.setSmallIcon(R.drawable.app_icon)
+                    .setContentTitle("New order from " + buyer_name)
+                    .setContentText(cost)
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)
                     .setContentIntent(pendingIntent);
         }else if(type.equals("1")){
-                    notificationBuilder.setSmallIcon(R.drawable.message_icon)
-                    .setContentTitle("New message!")
+                    notificationBuilder.setSmallIcon(R.drawable.app_icon)
+                    .setContentTitle("New message from " + buyer_name)
                     .setContentText(message)
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)
