@@ -9,16 +9,16 @@ public class InfoHolder {
     private String order_reference;
     private String buyer_name;
     private String cost;
-    private String order_amount;
+    private String url;
     private String payment_method;
     private String order_status;
     private String type;
     private String message;
 
 
-    public InfoHolder(String cost,String type, String buyer_name, String order_amount, String order_date, String order_reference, String order_status, String payment_method, String message, boolean isClicked) {
+    public InfoHolder(String cost,String type, String buyer_name, String url, String order_date, String order_reference, String order_status, String payment_method, String message, boolean isClicked) {
         this.buyer_name = buyer_name;
-        this.order_amount = order_amount;
+        this.url = url;
         this.type = type;
         this.cost = cost;
         this.order_date = order_date;
@@ -38,12 +38,12 @@ public class InfoHolder {
         this.buyer_name = buyer_name;
     }
 
-    public String getOrder_amount() {
-        return order_amount;
+    public String getUrl() {
+        return url;
     }
 
-    public void setOrder_amount(String order_amount) {
-        this.order_amount = order_amount;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getOrder_date() {

@@ -47,7 +47,7 @@ public class GcmMessageReceiver extends GcmListenerService {
         String order_reference = data.getString("order_reference");
         String buyer_name = data.getString("buyer_name");
         String cost = data.getString("cost");
-        String order_amount = data.getString("order_amount");
+        String url = data.getString("url");
         String payment_method = data.getString("payment_method");
         String order_status = data.getString("order_status");
 
@@ -66,7 +66,7 @@ public class GcmMessageReceiver extends GcmListenerService {
             jsonObject.putOpt("order_reference", order_reference);
             jsonObject.putOpt("buyer_name", buyer_name);
             jsonObject.putOpt("cost", cost);
-            jsonObject.putOpt("order_amount", order_amount);
+            jsonObject.putOpt("url", url);
             jsonObject.putOpt("payment_method", payment_method);
             jsonObject.putOpt("order_status", order_status);
         } catch (JSONException e) {

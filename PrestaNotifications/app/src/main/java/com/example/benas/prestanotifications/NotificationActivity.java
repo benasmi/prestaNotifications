@@ -111,11 +111,11 @@ public class NotificationActivity extends AppCompatActivity {
                     String order_reference = jsonObject.getString("order_reference");
                     String buyer_name = jsonObject.getString("buyer_name");
                     String cost = jsonObject.getString("cost");
-                    String order_amount = jsonObject.getString("order_amount");
-                    String payment_method = "Ordered via " + jsonObject.getString("payment_method");
+                    String url =  jsonObject.getString("url");
+                    String payment_method = jsonObject.getString("payment_method");
                     String order_status = jsonObject.getString("order_status");
 
-                    adapter.add(new InfoHolder(cost, type, buyer_name, order_amount, message_date, order_reference, order_status, payment_method, message, true));
+                    adapter.add(new InfoHolder(cost, type, buyer_name, url, message_date, order_reference, order_status, payment_method, message, true));
 
 
                 }
@@ -165,10 +165,10 @@ public class NotificationActivity extends AppCompatActivity {
                         String order_reference = jsonObject.getString("order_reference");
                         String buyer_name = jsonObject.getString("buyer_name");
                         String cost = jsonObject.getString("cost");
-                        String order_amount = jsonObject.getString("order_amount");
-                        String payment_method = "Ordered via " + jsonObject.getString("payment_method");
+                        String url =  jsonObject.getString("url");
+                        String payment_method =  jsonObject.getString("payment_method");
                         String order_status = jsonObject.getString("order_status");
-                        adapter.add(new InfoHolder(cost, type, buyer_name, order_amount, message_date, order_reference, order_status, payment_method,message, true));
+                        adapter.add(new InfoHolder(cost, type, buyer_name, url, message_date, order_reference, order_status, payment_method,message, true));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

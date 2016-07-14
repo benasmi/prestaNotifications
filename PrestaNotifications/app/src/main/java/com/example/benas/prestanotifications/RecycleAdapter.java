@@ -108,13 +108,14 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
             holder.order_reference.setText(data.getOrder_reference());
             holder.order_status.setText(data.getOrder_status());
             holder.buyer_name.setText(data.getBuyer_name());
-            holder.order_amount.setText(data.getOrder_amount());
+            holder.url.setText("New order from: " + data.getUrl());
             holder.cost.setText(data.getCost());
             holder.payment_method.setText(data.getPayment_method());
         } else {
             holder.message.setText(data.getMessage());
-            holder.message_buyer_name.setText(data.getBuyer_name());
+            holder.message_buyer_name.setText(data.getBuyer_name()+":");
             holder.message_date.setText(data.getOrder_date());
+            holder.message_url.setText(data.getUrl());
         }
 
     }
@@ -127,7 +128,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         private TextView date;
         private TextView order_reference;
         private TextView buyer_name;
-        private TextView order_amount;
+        private TextView url;
         private TextView cost;
         private TextView payment_method;
         private TextView order_status;
@@ -137,6 +138,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         private TextView message_date;
         private TextView message_buyer_name;
         private TextView message;
+        private TextView message_url;
         private RelativeLayout message_layout;
 
         private boolean isClicked = true;
@@ -164,7 +166,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
                     date = (TextView) itemView.findViewById(R.id.date);
                     order_reference = (TextView) itemView.findViewById(R.id.order_reference);
                     buyer_name = (TextView) itemView.findViewById(R.id.message_buyer_name);
-                    order_amount = (TextView) itemView.findViewById(R.id.order_amount);
+                    url = (TextView) itemView.findViewById(R.id.url);
                     cost = (TextView) itemView.findViewById(R.id.cost);
                     payment_method = (TextView) itemView.findViewById(R.id.payment_method);
                     order_status = (TextView) itemView.findViewById(R.id.order_status);
@@ -176,6 +178,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
                     message_layout = (RelativeLayout) itemView.findViewById(R.id.message_text_wrap);
                     message_buyer_name = (TextView) itemView.findViewById(R.id.message_buyer_name);
                     message = (TextView) itemView.findViewById(R.id.message);
+                    message_url = (TextView) itemView.findViewById(R.id.message_url);
                     message_date = (TextView) itemView.findViewById(R.id.message_date);
                     message_layout.setOnClickListener(this);
                     break;

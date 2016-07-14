@@ -37,7 +37,7 @@
             android:layout_centerHorizontal="true"
             android:textColor="#95a5a6"
             android:textSize="20dp"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
     </RelativeLayout>
 
