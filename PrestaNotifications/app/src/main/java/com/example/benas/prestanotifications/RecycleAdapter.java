@@ -121,7 +121,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
 
         //ORDER layout
@@ -144,17 +144,6 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         private boolean isClicked = true;
 
 
-        @Override
-        public void onClick(View v) {
-            ResizeAnimation expand = new ResizeAnimation(v, 390, 175);
-            expand.setDuration(200);
-            ResizeAnimation shrink = new ResizeAnimation(v, 175, 390);
-            shrink.setDuration(200);
-
-            v.startAnimation(isClicked ? expand : shrink);
-            isClicked = !isClicked;
-        }
-
         public ViewHolder(View itemView, int type) {
 
             super(itemView);
@@ -170,7 +159,18 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
                     cost = (TextView) itemView.findViewById(R.id.cost);
                     payment_method = (TextView) itemView.findViewById(R.id.payment_method);
                     order_status = (TextView) itemView.findViewById(R.id.order_status);
-                    order_layout.setOnClickListener(this);
+                    order_layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ResizeAnimation expand = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(1000, context), (int) CheckingUtils.convertPixelsToDp(480, context));
+                            expand.setDuration(200);
+                            ResizeAnimation shrink = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(480, context), (int) CheckingUtils.convertPixelsToDp(1000, context));
+                            shrink.setDuration(200);
+                            v.startAnimation(isClicked ? expand : shrink);
+
+                            isClicked = !isClicked;
+                        }
+                    });
 
                     break;
                 case 1:
@@ -180,7 +180,19 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
                     message = (TextView) itemView.findViewById(R.id.message);
                     message_url = (TextView) itemView.findViewById(R.id.message_url);
                     message_date = (TextView) itemView.findViewById(R.id.message_date);
-                    message_layout.setOnClickListener(this);
+
+                    message_layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ResizeAnimation expand = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(1000f + message.getLineCount() * 50 + 200, context), (int) CheckingUtils.convertPixelsToDp(480, context));
+                            expand.setDuration(200);
+                            ResizeAnimation shrink = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(480, context), (int) CheckingUtils.convertPixelsToDp(1000f + message.getLineCount() * 50 + 200, context));
+                            shrink.setDuration(200);
+                            v.startAnimation(isClicked ? expand : shrink);
+                            isClicked = !isClicked;
+
+                        }
+                    });
                     break;
             }
         }

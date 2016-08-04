@@ -112,6 +112,7 @@ public class ServerManager extends AsyncTask<String, String, String>{
         }else if(method_type.equals("LOGOUT")){
             sharedPreferences.edit().putString("username","").commit();
             sharedPreferences.edit().putString("password","").commit();
+            context.getSharedPreferences("notifications", Context.MODE_PRIVATE).edit().putString("notification_data", "").commit();
             context.startActivity(new Intent(context, LoginActivity.class));
         }
     }

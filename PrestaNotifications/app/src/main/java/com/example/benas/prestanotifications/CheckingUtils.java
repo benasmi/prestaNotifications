@@ -3,7 +3,9 @@ package com.example.benas.prestanotifications;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
+import android.util.DisplayMetrics;
 
 import java.util.Date;
 
@@ -51,6 +53,12 @@ public class CheckingUtils {
                     }
                 })
                 .show();
+    }
+    public static float convertPixelsToDp(float px, Context context){
+        Resources resources = context.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float dp = px / ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+        return dp;
     }
 
 

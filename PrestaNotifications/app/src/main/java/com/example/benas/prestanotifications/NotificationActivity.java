@@ -37,7 +37,6 @@ public class NotificationActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-    private boolean visibility = false;
     private RecycleAdapter adapter;
     private ArrayList<InfoHolder> data = new ArrayList<InfoHolder>();
     private boolean isReceiverRegistered;
@@ -94,13 +93,14 @@ public class NotificationActivity extends AppCompatActivity {
         adapter = new RecycleAdapter(this, data);
 
 
-
+        no_notifs.setVisibility(View.VISIBLE);
 
         if(!NotificationDataRaw.isEmpty()) {
             try {
                 JSONArray jsonArray = new JSONArray(NotificationDataRaw);
-                if(jsonArray.length()==0){
-                    no_notifs.setVisibility(View.VISIBLE);
+
+                if(jsonArray.length()>0){
+                    no_notifs.setVisibility(View.INVISIBLE);
                 }
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);

@@ -41,6 +41,7 @@ public class GcmMessageReceiver extends GcmListenerService {
 
         ShortcutBadger.applyCount(this, badgeCount);
 
+
         String message = data.getString("message");
         String type = data.getString("type");
         String message_date = data.getString("message_date");
@@ -48,11 +49,12 @@ public class GcmMessageReceiver extends GcmListenerService {
         String buyer_name = data.getString("buyer_name");
         String cost = data.getString("cost");
         String url = data.getString("url");
+
         String payment_method = data.getString("payment_method");
         String order_status = data.getString("order_status");
 
 
-        sendNotification(buyer_name, type, message, cost);
+        sendNotification(buyer_name, type, message, cost, url);
 
 
         String notification_data = sharedPreferences.getString("notification_data", "");
@@ -91,7 +93,7 @@ public class GcmMessageReceiver extends GcmListenerService {
         LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent("UPDATE_REQUIRED"));
     }
 
-    private void sendNotification(String buyer_name, String type, String message, String cost) {
+    private void sendNotification(String buyer_name, String type, String message, String cost, String url) {
         Intent intent = new Intent(this, NotificationActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -110,7 +112,7 @@ public class GcmMessageReceiver extends GcmListenerService {
                     .setContentIntent(pendingIntent);
         }else if(type.equals("1")){
                     notificationBuilder.setSmallIcon(R.drawable.app_icon)
-                    .setContentTitle("New message from " + buyer_name)
+                    .setContentTitle("New message from " + url)
                     .setContentText(message)
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)
