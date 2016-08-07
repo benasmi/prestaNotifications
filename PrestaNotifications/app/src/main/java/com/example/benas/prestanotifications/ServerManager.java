@@ -93,6 +93,7 @@ public class ServerManager extends AsyncTask<String, String, String>{
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         dismissDialog();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         if(method_type.equals("LOGIN")){
 
             switch (response){
@@ -100,13 +101,20 @@ public class ServerManager extends AsyncTask<String, String, String>{
                     if(startActivity.equals("1")){
                     context.startActivity(new Intent(context, NotificationActivity.class));
                     }
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
                     editor.putString("username", username);
                     editor.putString("password", password);
                     editor.commit();
                     break;
                 case 1:
                     CheckingUtils.createErrorBox("Invalid email or password", context);
+
+                    editor.putString("username","");
+                    editor.putString("password","");
+                    editor.commit();
+
+                    context.startActivity(new Intent(context, LoginActivity.class));
+
                     break;
             }
         }else if(method_type.equals("LOGOUT")){

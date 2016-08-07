@@ -8,18 +8,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import java.util.ArrayList;
 
-
 public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHolder> {
-
 
     public Context context;
     private LayoutInflater layoutInflater;
@@ -29,6 +24,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         this.infoHolder = infoHolder;
         layoutInflater = LayoutInflater.from(context);
         this.context = context;
+
     }
 
     public void remove(int position) {
@@ -36,13 +32,12 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         notifyItemRemoved(position);
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("notifications", context.MODE_PRIVATE);
-
         String notification_data = sharedPreferences.getString("notification_data", "");
 
         if (!notification_data.isEmpty()) {
             try {
                 JSONArray jsonArray = new JSONArray(notification_data);
-                jsonArray.remove(position);
+                jsonArray = CheckingUtils.remove(position, jsonArray);
 
                 sharedPreferences.edit().putString("notification_data", jsonArray.toString()).commit();
             } catch (JSONException e) {
@@ -107,22 +102,19 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
             holder.date.setText(data.getOrder_date());
             holder.order_reference.setText(data.getOrder_reference());
             holder.order_status.setText(data.getOrder_status());
-            holder.buyer_name.setText(data.getBuyer_name());
-            holder.url.setText("New order from: " + data.getUrl());
+            holder.buyer_name.setText(data.getUrl());
+            holder.url.setText("New order");
             holder.cost.setText(data.getCost());
             holder.payment_method.setText(data.getPayment_method());
         } else {
             holder.message.setText(data.getMessage());
-            holder.message_buyer_name.setText(data.getBuyer_name()+":");
+            holder.message_buyer_name.setText(data.getUrl()+":");
             holder.message_date.setText(data.getOrder_date());
             holder.message_url.setText(data.getUrl());
         }
-
     }
 
-
     class ViewHolder extends RecyclerView.ViewHolder {
-
 
         //ORDER layout
         private TextView date;
@@ -162,9 +154,9 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
                     order_layout.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            ResizeAnimation expand = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(1000, context), (int) CheckingUtils.convertPixelsToDp(480, context));
+                            ResizeAnimation expand = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(110, context), (int) CheckingUtils.convertPixelsToDp(55, context));
                             expand.setDuration(200);
-                            ResizeAnimation shrink = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(480, context), (int) CheckingUtils.convertPixelsToDp(1000, context));
+                            ResizeAnimation shrink = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(55, context), (int) CheckingUtils.convertPixelsToDp(110, context));
                             shrink.setDuration(200);
                             v.startAnimation(isClicked ? expand : shrink);
 
@@ -174,19 +166,17 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
                     break;
                 case 1:
-
                     message_layout = (RelativeLayout) itemView.findViewById(R.id.message_text_wrap);
                     message_buyer_name = (TextView) itemView.findViewById(R.id.message_buyer_name);
                     message = (TextView) itemView.findViewById(R.id.message);
                     message_url = (TextView) itemView.findViewById(R.id.message_url);
                     message_date = (TextView) itemView.findViewById(R.id.message_date);
-
                     message_layout.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            ResizeAnimation expand = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(1000f + message.getLineCount() * 50 + 200, context), (int) CheckingUtils.convertPixelsToDp(480, context));
+                            ResizeAnimation expand = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(95  , context) + message.getLayout().getHeight(), (int) CheckingUtils.convertPixelsToDp(55, context));
                             expand.setDuration(200);
-                            ResizeAnimation shrink = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(480, context), (int) CheckingUtils.convertPixelsToDp(1000f + message.getLineCount() * 50 + 200, context));
+                            ResizeAnimation shrink = new ResizeAnimation(v, (int) CheckingUtils.convertPixelsToDp(55, context), (int) CheckingUtils.convertPixelsToDp(95 , context) + message.getLayout().getHeight());
                             shrink.setDuration(200);
                             v.startAnimation(isClicked ? expand : shrink);
                             isClicked = !isClicked;
@@ -200,7 +190,4 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
     }
 
-
 }
-
-

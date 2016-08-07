@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -79,16 +80,17 @@ public class GcmMessageReceiver extends GcmListenerService {
             JSONArray jsonArray = new JSONArray();
             jsonArray.put(jsonObject);
             sharedPreferences.edit().putString("notification_data", jsonArray.toString()).commit();
-            return;
+        }else{
+            try {
+                JSONArray jsonArray = new JSONArray(notification_data);
+                jsonArray.put(jsonObject);
+                sharedPreferences.edit().putString("notification_data", jsonArray.toString()).commit();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
-        try {
-            JSONArray jsonArray = new JSONArray(notification_data);
-            jsonArray.put(jsonObject);
-            sharedPreferences.edit().putString("notification_data", jsonArray.toString()).commit();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
 
         LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent("UPDATE_REQUIRED"));
     }
@@ -104,19 +106,21 @@ public class GcmMessageReceiver extends GcmListenerService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
 
         if(type.equals("0")) {
-                    notificationBuilder.setSmallIcon(R.drawable.app_icon)
-                    .setContentTitle("New order from " + buyer_name)
+                    notificationBuilder.setSmallIcon(CheckingUtils.getNotificationIcon())
+                    .setContentTitle("New order from " + url)
                     .setContentText(cost)
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)
                     .setContentIntent(pendingIntent);
+
         }else if(type.equals("1")){
-                    notificationBuilder.setSmallIcon(R.drawable.app_icon)
+                    notificationBuilder.setSmallIcon(CheckingUtils.getNotificationIcon())
                     .setContentTitle("New message from " + url)
                     .setContentText(message)
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)
                     .setContentIntent(pendingIntent);
+
         }
 
         NotificationManager notificationManager =

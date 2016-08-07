@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFDD4337"
-    tools:context="com.example.benas.prestanotifications.LoginActivity">
+    tools:context="com.example.benas.prestanotifications.LoginActivity"
+    android:gravity="center">
 
     <TextView
         android:id="@+id/useless"
@@ -12,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="89dp"
         android:text="Log In"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ecf0f1"
@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/username_login"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_below="@+id/useless"
         android:layout_centerHorizontal="true"
@@ -32,11 +32,13 @@
         android:paddingStart="10dp"
         android:singleLine="true"
         android:textColor="#ffffff"
-        android:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp" />
 
     <EditText
         android:id="@+id/password_login"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignStart="@+id/username_login"
         android:layout_below="@+id/username_login"
@@ -49,7 +51,8 @@
         android:password="true"
         android:singleLine="true"
         android:textColor="#ffffff"
-        android:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF"
+        android:layout_marginRight="50dp" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/login"
