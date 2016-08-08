@@ -74,7 +74,11 @@ public class NotificationActivity extends AppCompatActivity {
         handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
-                adapter.remove(msg.arg1);
+                try {
+                    adapter.remove(msg.arg1);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
 
                 if(msg.arg1==0){
                     no_notifs.setVisibility(View.VISIBLE);

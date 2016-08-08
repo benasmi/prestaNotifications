@@ -185,6 +185,8 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
                     });
                     break;
             }
+
+
         }
 
 
