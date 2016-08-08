@@ -106,20 +106,22 @@ public class GcmMessageReceiver extends GcmListenerService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
 
         if(type.equals("0")) {
-                    notificationBuilder.setSmallIcon(CheckingUtils.getNotificationIcon())
+                    notificationBuilder.setSmallIcon(R.drawable.app_icon1)
                     .setContentTitle("New order from " + url)
                     .setContentText(cost)
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)
-                    .setContentIntent(pendingIntent);
+                    .setContentIntent(pendingIntent)
+                            .setColor(Color.argb(1,231, 76, 60));
 
         }else if(type.equals("1")){
-                    notificationBuilder.setSmallIcon(CheckingUtils.getNotificationIcon())
+                    notificationBuilder.setSmallIcon(R.drawable.app_icon1)
                     .setContentTitle("New message from " + url)
                     .setContentText(message)
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)
-                    .setContentIntent(pendingIntent);
+                    .setContentIntent(pendingIntent)
+                    .setColor(Color.argb(1,231, 76, 60));
 
         }
 
