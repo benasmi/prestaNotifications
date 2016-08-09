@@ -7,66 +7,93 @@
     tools:context="com.example.benas.prestanotifications.LoginActivity"
     android:gravity="center">
 
-    <TextView
-        android:id="@+id/useless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Log In"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ecf0f1"
-        android:textSize="43dp" />
-
     <EditText
         android:id="@+id/username_login"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="45dp"
-        android:layout_below="@+id/useless"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
-
+        android:drawableLeft="@drawable/user_icon"
         android:hint="Username"
         android:maxLines="1"
-        android:paddingRight="5dp"
-        android:paddingStart="10dp"
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#FFFFFF"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp" />
+        android:background="@drawable/edit_borders"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/notifications_text_view"
+        android:drawablePadding="8dp"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/password_login"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="45dp"
-        android:layout_alignStart="@+id/username_login"
         android:layout_below="@+id/username_login"
         android:layout_marginTop="10dp"
-
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/lock_icon"
         android:hint="Password"
         android:maxLines="1"
-        android:paddingRight="5dp"
-        android:paddingStart="10dp"
         android:password="true"
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#FFFFFF"
-        android:layout_marginRight="50dp" />
+        android:background="@drawable/edit_borders"
+        android:layout_alignLeft="@+id/username_login"
+        android:layout_alignStart="@+id/username_login"
+        android:paddingLeft="10dp"
+        android:layout_alignRight="@+id/username_login"
+        android:layout_alignEnd="@+id/username_login" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/password_login"
-        android:layout_alignStart="@+id/password_login"
-        android:layout_below="@+id/password_login"
-        android:layout_marginTop="10dp"
         android:alpha="0.85"
         android:onClick="login"
         android:text="Login"
-        android:textColor="#34495e"
+        android:textColor="#ecf0f1"
         android:textSize="17dp"
-        android:background="@drawable/button_borders" />
+        android:background="@drawable/button_borders_red"
+        android:layout_below="@+id/password_login"
+        android:layout_marginTop="15dp"
+        android:layout_alignRight="@+id/password_login"
+        android:layout_alignEnd="@+id/password_login"
+        android:layout_alignLeft="@+id/password_login"
+        android:layout_alignStart="@+id/password_login"
+        android:layout_marginBottom="130dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Presta"
+        android:id="@+id/presta_text_view"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:textSize="80dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Notifications"
+        android:id="@+id/notifications_text_view"
+        android:textSize="38dp"
+        android:layout_below="@+id/presta_text_view"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/imageView6"
+        android:background="#ecf0f1"
+        android:alpha="1"
+        android:layout_alignLeft="@+id/presta_text_view"
+        android:layout_alignStart="@+id/presta_text_view"
+        android:layout_below="@+id/presta_text_view"
+        android:layout_alignRight="@+id/presta_text_view"
+        android:layout_alignEnd="@+id/presta_text_view" />
 
 </RelativeLayout>

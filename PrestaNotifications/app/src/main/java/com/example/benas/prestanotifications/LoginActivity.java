@@ -2,6 +2,7 @@ package com.example.benas.prestanotifications;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.push_right_in, R.anim.push_rigth_out);
         setContentView(R.layout.activity_login);
+
+        Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/manteka.ttf");
+
+        TextView presta = (TextView) findViewById(R.id.presta_text_view);
+        TextView notifications = (TextView) findViewById(R.id.notifications_text_view);
+        presta.setTypeface(tf);
+        notifications.setTypeface(tf);
 
         if(!CheckingUtils.isNetworkConnected(this)) {
             CheckingUtils.starterErrorBox("Please, enable your internet connection and start again", this);

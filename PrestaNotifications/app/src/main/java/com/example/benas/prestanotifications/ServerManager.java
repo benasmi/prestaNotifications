@@ -101,7 +101,6 @@ public class ServerManager extends AsyncTask<String, String, String>{
                     if(startActivity.equals("1")){
                     context.startActivity(new Intent(context, NotificationActivity.class));
                     }
-
                     editor.putString("username", username);
                     editor.putString("password", password);
                     editor.commit();
@@ -109,13 +108,14 @@ public class ServerManager extends AsyncTask<String, String, String>{
                 case 1:
                     CheckingUtils.createErrorBox("Invalid email or password", context);
 
-                    editor.putString("username","");
-                    editor.putString("password","");
-                    editor.commit();
-
-                    context.startActivity(new Intent(context, LoginActivity.class));
-
+                    if(startActivity.equals("0")){
+                        context.startActivity(new Intent(context, LoginActivity.class));
+                        editor.putString("username","");
+                        editor.putString("password","");
+                        editor.commit();
+                    }
                     break;
+
             }
         }else if(method_type.equals("LOGOUT")){
             sharedPreferences.edit().putString("username","").commit();
@@ -170,7 +170,6 @@ public class ServerManager extends AsyncTask<String, String, String>{
             return 0;
         }
     }
-
     private void logout() {
 
         //Connect to mysql.
