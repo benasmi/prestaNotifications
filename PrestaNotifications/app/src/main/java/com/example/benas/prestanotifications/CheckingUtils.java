@@ -34,31 +34,63 @@ public class CheckingUtils {
 
     //Error box to inform UI
     public static void createErrorBox(String message, Context context){
-        new AlertDialog.Builder(context, R.style.MyAlertDialogStyle)
-                .setMessage(message)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .show();
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            new AlertDialog.Builder(context, R.style.MyAlertDialogStyle)
+                    .setMessage(message)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
+        }else{
+            new AlertDialog.Builder(context)
+                    .setMessage(message)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
+        }
     }
     public static void starterErrorBox(String message, Context context){
-        new AlertDialog.Builder(context, R.style.MyAlertDialogStyle)
 
-                .setMessage(message)
-                .setCancelable(false)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        System.exit(1);
-                        dialog.dismiss();
-                    }
-                })
-                .show();
+        if (android.os.Build.VERSION.SDK_INT >= 21){
+            new AlertDialog.Builder(context, R.style.MyAlertDialogStyle)
+
+                    .setMessage(message)
+                    .setCancelable(false)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            System.exit(1);
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
+        } else{
+            new AlertDialog.Builder(context)
+
+                    .setMessage(message)
+                    .setCancelable(false)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            System.exit(1);
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
+        }
+
     }
     public static float convertPixelsToDp(float px, Context context){
         Resources resources = context.getResources();

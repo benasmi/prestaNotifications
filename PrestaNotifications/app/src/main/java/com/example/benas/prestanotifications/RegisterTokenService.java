@@ -72,7 +72,7 @@ public class RegisterTokenService extends IntentService {
 
         //Connect to mysql.
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://bm.binded.co.uk/update_token.php");
+        HttpPost httpPost = new HttpPost("http://bm.prestanotifcations.com/update_token.php");
 
         //JSON object.
         JSONObject jsonObject = new JSONObject();

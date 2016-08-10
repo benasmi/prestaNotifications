@@ -107,7 +107,7 @@ public class GcmMessageReceiver extends GcmListenerService {
 
         if(type.equals("0")) {
                     notificationBuilder.setSmallIcon(R.drawable.app_icon1)
-                    .setContentTitle("New order from " + url)
+                    .setContentTitle("New order in " + url)
                     .setContentText(cost)
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)

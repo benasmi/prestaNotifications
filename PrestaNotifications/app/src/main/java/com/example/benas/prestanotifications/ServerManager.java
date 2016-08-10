@@ -131,7 +131,7 @@ public class ServerManager extends AsyncTask<String, String, String>{
 
         //Connect to mysql.
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://bm.binded.co.uk/login.php");
+        HttpPost httpPost = new HttpPost("http://bm.prestanotifcations.com/login.php");
 
 
         //JSON object.
@@ -174,7 +174,7 @@ public class ServerManager extends AsyncTask<String, String, String>{
 
         //Connect to mysql.
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://bm.binded.co.uk/delete_token.php");
+        HttpPost httpPost = new HttpPost("http://bm.prestanotifcations.com/delete_token.php");
 
 
         //JSON object.
