@@ -49,7 +49,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
 
     public void add(InfoHolder info) {
-        infoHolder.add(info);
+        infoHolder.add(0,info);
         notifyDataSetChanged();
     }
 
