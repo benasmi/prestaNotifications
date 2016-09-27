@@ -25,21 +25,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".LoginActivity"
-            android:noHistory="true"
+        <activity android:name=".StartingActivity"
+
+            android:theme="@style/AppThemeNoBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoBar">
+            android:noHistory="true"
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoBar">
+
         </activity>
         <activity
             android:name=".NotificationActivity"
             android:screenOrientation="portrait"
             android:noHistory="true"
+            
             android:theme="@style/AppThemeNoBar" />
 
         <receiver

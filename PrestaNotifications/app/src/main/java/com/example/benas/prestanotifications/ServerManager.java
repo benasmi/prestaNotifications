@@ -40,6 +40,12 @@ public class ServerManager extends AsyncTask<String, String, String>{
     private GoogleCloudMessaging gcm;
     private String reg_id;
 
+    private boolean success = false;
+
+    private static final String ADDRESS_LOGIN = "http://bm.prestanotifications.com/login.php";
+    private static final String ADDRESS_LOGOUT = "http://bm.prestanotifications.com/delete_token.php";
+
+
     public ServerManager(Context context, String dialog_type){
         sharedPreferences = context.getSharedPreferences("DataPrefs", Context.MODE_PRIVATE);
         this.context = context;
@@ -115,9 +121,16 @@ public class ServerManager extends AsyncTask<String, String, String>{
                         editor.commit();
                     }
                     break;
+                case 2:
+                    CheckingUtils.createErrorBox("Ooops...Please, check you internet connection.", context);
 
             }
         }else if(method_type.equals("LOGOUT")){
+            if(!success){
+                CheckingUtils.createErrorBox("Ooops... Please, check your internet connection", context);
+
+            }
+
             sharedPreferences.edit().putString("username","").commit();
             sharedPreferences.edit().putString("password","").commit();
             context.getSharedPreferences("notifications", Context.MODE_PRIVATE).edit().putString("notification_data", "").commit();
@@ -129,9 +142,13 @@ public class ServerManager extends AsyncTask<String, String, String>{
     //Login method
     private int login(String username, String password) {
 
+        if(!CheckingUtils.connectionToServer(ADDRESS_LOGIN, 1500)){
+            return 2;
+        }
+
         //Connect to mysql.
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://bm.prestanotifications.com/login.php");
+        HttpPost httpPost = new HttpPost(ADDRESS_LOGIN);
 
 
         //JSON object.
@@ -163,18 +180,39 @@ public class ServerManager extends AsyncTask<String, String, String>{
             e.printStackTrace();
         }
 
+
+
+
         try {
-            return responseObject.getInt("code");
+            int responseCode = responseObject.getInt("code");
+
+            if(String.valueOf(responseCode).equals(null)){
+                if(!CheckingUtils.connectionToServer(ADDRESS_LOGIN, 1500)){
+                    return 2;
+                }
+            }
+
+            return responseCode;
+
         } catch (JSONException e) {
             e.printStackTrace();
             return 0;
         }
+
     }
     private void logout() {
 
+        if(!CheckingUtils.connectionToServer(ADDRESS_LOGOUT, 1500)){
+            success=false;
+
+        }else{
+            success=true;
+        }
+
+
         //Connect to mysql.
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://bm.prestanotifications.com/delete_token.php");
+        HttpPost httpPost = new HttpPost(ADDRESS_LOGOUT);
 
 
         //JSON object.
