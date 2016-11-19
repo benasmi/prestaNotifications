@@ -1,10 +1,8 @@
-package com.example.benas.prestanotifications;
+package com.productions.mabe.prestanotifications;
 
 import android.content.Intent;
-import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
 
-import com.google.android.gms.gcm.GcmListenerService;
 import com.google.android.gms.iid.InstanceIDListenerService;
 
 /**

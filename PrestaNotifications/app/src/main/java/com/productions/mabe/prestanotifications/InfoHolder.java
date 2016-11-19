@@ -1,7 +1,5 @@
-package com.example.benas.prestanotifications;
+package com.productions.mabe.prestanotifications;
 
-
-import android.widget.LinearLayout;
 
 public class InfoHolder {
 

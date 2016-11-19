@@ -1,11 +1,10 @@
-package com.example.benas.prestanotifications;
+package com.productions.mabe.prestanotifications;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
-import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
 import org.json.JSONArray;
@@ -14,9 +13,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**

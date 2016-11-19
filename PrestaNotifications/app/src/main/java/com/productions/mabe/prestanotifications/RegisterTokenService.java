@@ -1,4 +1,4 @@
-package com.example.benas.prestanotifications;
+package com.productions.mabe.prestanotifications;
 
 import android.app.IntentService;
 import android.content.Intent;

@@ -1,11 +1,8 @@
-package com.example.benas.prestanotifications;
+package com.productions.mabe.prestanotifications;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
-import android.widget.TextView;
 
 public class RecyclerViewHelper extends ItemTouchHelper.SimpleCallback {
     private RecycleAdapter mMovieAdapter;
