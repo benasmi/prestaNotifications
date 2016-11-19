@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFDD4337"
-    tools:context="com.productions.mabe.prestanotifications.com.productions.benas.prestanotifications.LoginActivity"
+    tools:context="com.mbproductions.benas.prestanotifications.com.productions.benas.prestanotifications.LoginActivity"
     android:gravity="center_vertical">
 
     <EditText

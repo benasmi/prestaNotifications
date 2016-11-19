@@ -1,4 +1,4 @@
-package com.productions.mabe.prestanotifications;
+package com.mbproductions.benas.prestanotifications;
 
 import android.view.View;
 import android.view.animation.Animation;

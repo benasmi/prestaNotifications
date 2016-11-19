@@ -1,4 +1,4 @@
-package com.productions.mabe.prestanotifications;
+package com.mbproductions.benas.prestanotifications;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

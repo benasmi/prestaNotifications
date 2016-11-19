@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    package="com.productions.mabe.prestanotifications">
+    package="com.mbproductions.benas.prestanotifications">
     <meta-data
         android:name="com.google.android.gms.version"
         android:value="@integer/google_play_services_version"/>
@@ -25,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.productions.mabe.prestanotifications.StartingActivity"
+        <activity android:name="com.mbproductions.benas.prestanotifications.StartingActivity"
 
             android:theme="@style/AppThemeNoBar"
             android:screenOrientation="portrait"
@@ -41,14 +41,14 @@
         </activity>
 
         <activity
-            android:name="com.productions.mabe.prestanotifications.LoginActivity"
+            android:name="com.mbproductions.benas.prestanotifications.LoginActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoBar">
 
         </activity>
         <activity
-            android:name="com.productions.mabe.prestanotifications.NotificationActivity"
+            android:name="com.mbproductions.benas.prestanotifications.NotificationActivity"
             android:screenOrientation="portrait"
             android:noHistory="true"
             
@@ -69,7 +69,7 @@
 
 
         <service
-            android:name="com.productions.mabe.prestanotifications.GcmMessageReceiver"
+            android:name="com.mbproductions.benas.prestanotifications.GcmMessageReceiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -78,7 +78,7 @@
         </service>
 
         <service
-            android:name="com.productions.mabe.prestanotifications.GcmOnTokenRefresh"
+            android:name="com.mbproductions.benas.prestanotifications.GcmOnTokenRefresh"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
@@ -87,7 +87,7 @@
         </service>
 
         <service
-            android:name="com.productions.mabe.prestanotifications.RegisterTokenService"
+            android:name="com.mbproductions.benas.prestanotifications.RegisterTokenService"
             android:exported="false"></service>
     </application>
 
