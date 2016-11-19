@@ -97,28 +97,11 @@
         android:layout_alignRight="@+id/presta_text_view"
         android:layout_alignEnd="@+id/presta_text_view" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageView7"
-        android:src="@drawable/prest_shop_icon"
-        android:layout_above="@+id/textView"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="WORKS WITH 1.5 &amp; 1.6 VERSIONS"
-        android:id="@+id/textView"
-        android:layout_below="@+id/login"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="v1.1.2"
+        android:text="v1.6.0"
         android:id="@+id/textView3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -126,5 +109,35 @@
         android:layout_marginRight="3dp"
         android:layout_marginBottom="3dp"
         android:textIsSelectable="false" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:text="Get Presta Shop module here"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:onClick="getModule"
+        android:id="@+id/button"
+        android:padding="5dp"
+        android:textColor="#ecf0f1"
+        android:layout_alignTop="@+id/login"
+        android:alpha="0.85"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="WORKS WITH 1.5 &amp; 1.6 VERSIONS"
+        android:id="@+id/textView"
+        android:layout_above="@+id/textView3"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:src="@drawable/prest_shop_icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/textView"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

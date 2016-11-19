@@ -3,6 +3,7 @@ package com.example.benas.prestanotifications;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -80,5 +81,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         new ServerManager(this,"LOGIN").execute("LOGIN", username, password, "1");
+    }
+
+    public void getModule(View view) {
+        String url = "http://addons.prestashop.com/en/24010-mobile-order-support-android-notifications.html";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 }
